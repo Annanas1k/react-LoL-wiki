@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../context/createContext";
+import { FaSignInAlt, FaUser } from "react-icons/fa";
+import { GiDervishSwords } from "react-icons/gi";
 
 export const Header = () => {
     const { user, logout } = useContext(UserContext);
@@ -9,7 +11,7 @@ export const Header = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary py-3">
             <div className="container">
                 <Link className="navbar-brand fw-bold" to="/">
-                    <h2 className="mb-0 text-white">LOL STATS</h2>
+                    <h2 className="mb-0 text-white"><GiDervishSwords /> LOL STATS</h2>
                 </Link>
 
                 <div className="collapse navbar-collapse">
@@ -28,14 +30,14 @@ export const Header = () => {
                     <div className="d-flex align-items-center">
                         {user ? (
                             <div className="d-flex align-items-center">
-                                <span className="text-riot-gold small me-3 fw-bold">
-                                    {user.username.toUpperCase()}
-                                </span>
+                                <NavLink to='/profile' className="text-riot-gold small me-3 fw-bold">
+                                    <FaUser />{user.username.toUpperCase()}
+                                </NavLink>
                                 <button 
                                     className="btn btn-outline-danger btn-sm fw-bold" 
                                     onClick={logout}
                                 >
-                                    LOGOUT
+                                    <FaSignInAlt />LOGOUT
                                 </button>
                             </div>
                         ) : (

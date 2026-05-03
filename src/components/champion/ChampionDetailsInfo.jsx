@@ -1,34 +1,28 @@
 
-const StatRow = ({ label, value }) => {
-    const segments = Array.from({ length: 10 }, (_, i) => i + 1);
+import { useUserContext } from "../../hooks/useUserContext";
+import { StatRow } from "./StatRow";
+import { FaHeart, FaRegHeart } from "react-icons/fa"
 
-    return (
-        <div className="mb-3 w-100">
-            <div className="d-flex justify-content-between align-items-center mb-1">
-                <span className="text-secondary small fw-bold" style={{ letterSpacing: '1px', fontSize: '0.7rem' }}>
-                    {label.toUpperCase()}
-                </span>
-            </div>
-            <div className="d-flex gap-1">
-                {segments.map((seg) => (
-                    <div
-                        key={seg}
-                        style={{
-                            height: '8px',
-                            flex: 1,
-                            backgroundColor: seg <= value ? '#c4b000' : 'rgba(255,255,255,0.1)',
-                            transform: 'skewX(-20deg)',
-                            transition: 'background-color 0.5s ease',
-                            border: '1px solid rgba(196, 176, 0, 0.05)'
-                        }}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-};
 
 export const ChampionDetailsInfo = ({ champion }) => {
+
+    const {user, toggleFavorite} = useUserContext()
+
+    const isFavorite = user?.favorites?.includes(champion.id);
+
+    const handleFavoriteClick = (e) => {
+        e.preventDefault(); 
+        e.stopPropagation();
+        
+        if (!user) {
+            alert("You need to be an user!");
+            return;
+        }
+        
+        toggleFavorite(champion.id);
+    }
+
+
     const difficultyLabel = champion.info.difficulty < 4 ? 'LOW' : champion.info.difficulty < 8 ? 'MEDIUM' : 'HIGH';
 
     return (
@@ -78,6 +72,17 @@ export const ChampionDetailsInfo = ({ champion }) => {
                                 <p className="text-secondary small mb-1">DIFFICULTY</p>
                                 <h6 className="text-riot-gold fw-bold mb-0">{difficultyLabel}</h6>
                             </div>
+                             <button 
+                                            onClick={handleFavoriteClick}
+                                            className="position-absolute top-0 end-0 m-2 btn btn-danger"
+                                            style={{ zIndex: 10, fontSize: '1.5rem', textDecoration: 'none' }}
+                                        >
+                                            {isFavorite ? (
+                                                <span>delete from favorites<FaHeart /></span>  // Inima plină dacă e favorit
+                                            ) : (
+                                                <span>Add to vavorites <FaRegHeart /></span> // Inima goală
+                                            )}
+                                        </button>
                         </div>
                     </div>
 

@@ -1,8 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import { useUserContext } from '../../hooks/useUserContext';
+import { FaHeart, FaRegHeart } from "react-icons/fa"
+
 
 export const ChampionListItem = React.memo(({ champion, version }) => {
   const navigate = useNavigate();
+  const {user, toggleFavorite}  = useUserContext()
+
+      const isFavorite = user?.favorites?.includes(champion.id);
+
+    const handleFavoriteClick = (e) => {
+        e.preventDefault(); 
+        e.stopPropagation();
+        
+        if (!user) {
+            alert("You need to be an user!");
+            return;
+        }
+        
+        toggleFavorite(champion.id);
+    }
+
   const iconUrl = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`;
 
   return (
@@ -29,6 +48,17 @@ export const ChampionListItem = React.memo(({ champion, version }) => {
       <div style={{ marginLeft: 'auto', color: '#c4b000' }}>
         {champion.tags.join(', ')}
       </div>
+      <button 
+                      onClick={handleFavoriteClick}
+                      className="btn btn-danger"
+                      style={{ zIndex: 10, fontSize: '1.5rem', textDecoration: 'none' }}
+                  >
+                      {isFavorite ? (
+                          <FaHeart /> 
+                      ) : (
+                          <FaRegHeart /> 
+                      )}
+                  </button>
     </div>
   );
 });

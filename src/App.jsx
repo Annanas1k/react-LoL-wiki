@@ -5,9 +5,13 @@ import {ChampionPage} from './pages/ChampionPages/ChampionPage'
 import { ChampionDetails } from "./pages/ChampionPages/ChampionDetails"
 import {Login} from './pages/auth/Login'
 import {Register} from './pages/auth/Register'
+import {Test} from './pages/test/Test'
 
 
 import "./App.css"
+import { UserProfile } from "./pages/auth/Profile"
+import { ProtectedRoute } from "./components/Layout/ProtectedRoute"
+import { NotFound } from "./pages/NotFound/NotFound"
 function App() {
 
   return (
@@ -24,6 +28,11 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
+        <Route path="/test" element={<Test />} />
+        <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<UserProfile />} />
+        </Route>
+        <Route path="*"  element={<NotFound />}/>
       </Route>
 
     </Routes>

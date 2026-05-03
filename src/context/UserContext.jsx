@@ -17,6 +17,8 @@ const userReducer = (state, action) => {
             return { ...state, loading: false, error: action.payload };
         case 'LOGOUT':
             return { ...state, user: null, error: null };
+        case 'UPDATE_FAVORITES':
+            return { ...state, user: { ...state.user, favorites: action.payload } };
         default:
             return state;
     }
@@ -71,12 +73,46 @@ export const UserProvider = ({ children }) => {
         dispatch({ type: 'LOGOUT' });
     };
 
+    const toggleFavorite = async (championId) => {
+    try {
+        const usersDB = JSON.parse(localStorage.getItem("users_db") || "[]");
+        const currentUser = JSON.parse(localStorage.getItem("riot_session"));
+        
+        // Găsim utilizatorul în DB
+        const userIndex = usersDB.findIndex(u => u.email === currentUser.email);
+        if (userIndex === -1) return;
+
+        let favorites = usersDB[userIndex].favorites || [];
+        
+        if (favorites.includes(championId)) {
+            favorites = favorites.filter(id => id !== championId);
+        } else {
+            favorites = [...favorites, championId];
+        }
+
+        // Update DB
+        usersDB[userIndex].favorites = favorites;
+        localStorage.setItem("users_db", JSON.stringify(usersDB));
+
+        // Update Session & State
+        const updatedUser = { ...currentUser, favorites };
+        localStorage.setItem("riot_session", JSON.stringify(updatedUser));
+        dispatch({ type: 'UPDATE_FAVORITES', payload: favorites });
+
+    } catch (err) {
+        console.error("Error updating favorites:", err);
+    }
+};
+
     const value = useMemo(() => ({
         ...state,
         register,
         login,
-        logout
+        logout,
+        toggleFavorite
     }), [state]);
+
+    
 
     return (
         <UserContext.Provider value={value}>
