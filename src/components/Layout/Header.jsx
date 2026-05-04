@@ -11,7 +11,7 @@ export const Header = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary py-3">
             <div className="container">
                 <Link className="navbar-brand fw-bold" to="/">
-                    <h2 className="mb-0 text-white"><GiDervishSwords /> LOL STATS</h2>
+                    <h2 className="mb-0 text-white"><GiDervishSwords /> Nexus Guide</h2>
                 </Link>
 
                 <div className="collapse navbar-collapse">
@@ -24,6 +24,9 @@ export const Header = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link text-uppercase fw-bold" to="/items">Items</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link text-uppercase fw-bold" to="/runes">Runes</NavLink>
                         </li>
                     </ul>
                     

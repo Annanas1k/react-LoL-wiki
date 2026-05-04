@@ -13,6 +13,8 @@ import { UserProfile } from "./pages/auth/Profile"
 import { ProtectedRoute } from "./components/Layout/ProtectedRoute"
 import { NotFound } from "./pages/NotFound/NotFound"
 import { ItemsPage } from "./pages/ItemsPage/ItemsPage"
+import { RunesPage } from "./pages/RunesPage/RunesPage"
+import { RunePathPage } from "./pages/RunesPage/RunesPathPage"
 function App() {
 
   return (
@@ -20,14 +22,21 @@ function App() {
      <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/items" element={<ItemsPage />} >
+
+        <Route path="/items"  >
+          <Route index  element={<ItemsPage />}/>
           <Route path=":section"  element={<ItemsPage />}/>
         </Route>
 
         <Route path="/champions">
           <Route index element={<ChampionPage />}/>
           <Route path=":championId"  element={<ChampionDetails />}/>
+        </Route>
 
+        <Route path="/runes">
+          <Route index element={<RunesPage />} />
+          <Route path=":pathId" element={<RunePathPage />} />
+          <Route path=":pathId/:runeName" element={<RunePathPage />} />
         </Route>
 
         <Route path="/auth" >

@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from 'react'
+import { useMemo,  useCallback } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router'
 import { useChampContext } from "../../hooks/useChampContext"
 import { ItemSidebar } from "../../components/items/ItemSidebar"

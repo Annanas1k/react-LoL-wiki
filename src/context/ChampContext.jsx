@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react"
-import { fetchChampions, fetchItems, fetchItemsTree, getLatestVersion } from "../services/api"
+import { fetchChampions, fetchItems, fetchItemsTree, fetchRunes, getLatestVersion } from "../services/api"
 import { ChampContext } from "./createContext"
 
 export const ChampProvider = ({ children }) => {
   const [champions, setChampions] = useState([])
   const [items, setItems] = useState({})
   const [itemTree, setItemTree] = useState([])
+  const [runes, setRunes] = useState([])
   const [loading, setLoading] = useState(true)
   const [version, setVersion] = useState(null)
 
@@ -19,17 +20,25 @@ export const ChampProvider = ({ children }) => {
         const cachedChamp = localStorage.getItem('champions_data')
         const cachedItems = localStorage.getItem('items_data')
         const cachedItemsTree = localStorage.getItem('items_tree_data')
+        const cachedRunes     = localStorage.getItem('runes_data')
 
-        if (cachedVersion === latestVersion && cachedChamp && cachedItems && cachedItemsTree) {
+        if (cachedVersion === latestVersion 
+              && cachedChamp 
+              && cachedItems 
+              && cachedItemsTree
+              && cachedRunes) {
+
           setChampions(JSON.parse(cachedChamp))
           setItems(JSON.parse(cachedItems))
           setItemTree(JSON.parse(cachedItemsTree))
+          setRunes(JSON.parse(cachedRunes))
           setLoading(false)
         } else {
-          const [champsData, itemsData, itemsTreeData] = await Promise.all([
+          const [champsData, itemsData, itemsTreeData, runesData] = await Promise.all([
             fetchChampions(latestVersion),
             fetchItems(latestVersion),
-            fetchItemsTree(latestVersion)
+            fetchItemsTree(latestVersion),
+            fetchRunes(latestVersion)
           ])
 
           const champsArray = Object.values(champsData)
@@ -37,10 +46,12 @@ export const ChampProvider = ({ children }) => {
           localStorage.setItem('items_data', JSON.stringify(itemsData))
           localStorage.setItem('items_tree_data', JSON.stringify(itemsTreeData))
           localStorage.setItem('riot_version', latestVersion)
+          localStorage.setItem('runes_data', JSON.stringify(runesData))
 
           setChampions(champsArray)
           setItems(itemsData)
           setItemTree(itemsTreeData)
+          setRunes(runesData)
           setLoading(false)
         }
       } catch (err) {
@@ -53,8 +64,8 @@ export const ChampProvider = ({ children }) => {
   }, [])
 
   const value = useMemo(() => ({
-    champions, items, itemTree, loading, version
-  }), [champions, items, itemTree, loading, version])
+    champions, items, itemTree, runes, loading, version
+  }), [champions, items, itemTree, runes, loading, version])
 
   return (
     <ChampContext.Provider value={value}>

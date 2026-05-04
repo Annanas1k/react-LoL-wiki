@@ -31,3 +31,12 @@ export const fetchItemsTree = async (version) => {
   const data = await res.json()
   return data.tree
 }
+
+
+export const fetchRunes = async (version) => {
+  const res = await fetch(
+    `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/runesReforged.json`
+  )
+  const data = await res.json()
+  return data
+}
