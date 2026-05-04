@@ -1,51 +1,64 @@
 import { useEffect, useMemo, useState } from "react"
-import { fetchChampions, getLatestVersion } from "../services/api"
+import { fetchChampions, fetchItems, fetchItemsTree, getLatestVersion } from "../services/api"
 import { ChampContext } from "./createContext"
 
-export const ChampProvider = ({children}) =>{
-    const [champions, setChampions] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [version, setVersion] = useState(null)
+export const ChampProvider = ({ children }) => {
+  const [champions, setChampions] = useState([])
+  const [items, setItems] = useState({})
+  const [itemTree, setItemTree] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [version, setVersion] = useState(null)
 
-    useEffect(()=>{
-        const loadData = async () =>{
-            try {
-                const latestVersion = await getLatestVersion()
-                setVersion(latestVersion)
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const latestVersion = await getLatestVersion()
+        setVersion(latestVersion)
 
-                const cachedData = localStorage.getItem('champions_data')
-                const cachedVersion = localStorage.getItem('champions_version')
+        const cachedVersion = localStorage.getItem('riot_version')
+        const cachedChamp = localStorage.getItem('champions_data')
+        const cachedItems = localStorage.getItem('items_data')
+        const cachedItemsTree = localStorage.getItem('items_tree_data')
 
-                if(cachedData && cachedVersion === latestVersion){
-                    setChampions(JSON.parse(cachedData))
-                    setLoading(false)
-                } else {
-                    const data = await fetchChampions(latestVersion)
-                    const champsArray = Object.values(data)
+        if (cachedVersion === latestVersion && cachedChamp && cachedItems && cachedItemsTree) {
+          setChampions(JSON.parse(cachedChamp))
+          setItems(JSON.parse(cachedItems))
+          setItemTree(JSON.parse(cachedItemsTree))
+          setLoading(false)
+        } else {
+          const [champsData, itemsData, itemsTreeData] = await Promise.all([
+            fetchChampions(latestVersion),
+            fetchItems(latestVersion),
+            fetchItemsTree(latestVersion)
+          ])
 
-                    localStorage.setItem('champions_data', JSON.stringify(champsArray))
-                    localStorage.setItem('champions_version', latestVersion)
+          const champsArray = Object.values(champsData)
+          localStorage.setItem('champions_data', JSON.stringify(champsArray))
+          localStorage.setItem('items_data', JSON.stringify(itemsData))
+          localStorage.setItem('items_tree_data', JSON.stringify(itemsTreeData))
+          localStorage.setItem('riot_version', latestVersion)
 
-                    setChampions(champsArray)
-                    setLoading(false)
-                }
-            }catch(err) {
-                console.error("Failed to fetch champions: ", err)
-                setLoading(false)
-            }
+          setChampions(champsArray)
+          setItems(itemsData)
+          setItemTree(itemsTreeData)
+          setLoading(false)
         }
-        loadData()
-    }, [])
+      } catch (err) {
+        console.error("Failed to fetch champions: ", err)
+        setLoading(false)
+      }
+    }
 
+    loadData()
+  }, [])
 
-    const  value = useMemo(()=>({
-        champions, loading, version
-    }), [champions, loading, version])
+  const value = useMemo(() => ({
+    champions, items, itemTree, loading, version
+  }), [champions, items, itemTree, loading, version])
 
-    return (
-        <ChampContext.Provider value={value}>
-            {children}
-        </ChampContext.Provider>
-    )
-
+  return (
+    <ChampContext.Provider value={value}>
+      {children}
+    </ChampContext.Provider>
+  )
 }

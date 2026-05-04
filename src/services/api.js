@@ -18,3 +18,16 @@ export const fetchChampionDetails = async (version, id) =>{
     const data = await  res.json()
     return data.data[id]
 }
+
+
+export const fetchItems = async (version) => {
+  const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/item.json`)
+  const data = await res.json()
+  return data.data
+}
+
+export const fetchItemsTree = async (version) => {
+  const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/item.json`)
+  const data = await res.json()
+  return data.tree
+}

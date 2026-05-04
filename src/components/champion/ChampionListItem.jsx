@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { useUserContext } from '../../hooks/useUserContext';
 import { FaHeart, FaRegHeart } from "react-icons/fa"
+import {getChampImage} from '../../utils/helpers'
 
 
 export const ChampionListItem = React.memo(({ champion, version }) => {
@@ -22,7 +23,7 @@ export const ChampionListItem = React.memo(({ champion, version }) => {
         toggleFavorite(champion.id);
     }
 
-  const iconUrl = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`;
+  const iconUrl = getChampImage(version, champion.id)
 
   return (
     <div 

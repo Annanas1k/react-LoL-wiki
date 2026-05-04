@@ -23,7 +23,7 @@ export const Header = () => {
                             <NavLink className="nav-link text-uppercase fw-bold" to="/patch-notes">Patch Notes</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link text-uppercase fw-bold" to="/universe">Universe</NavLink>
+                            <NavLink className="nav-link text-uppercase fw-bold" to="/items">Items</NavLink>
                         </li>
                     </ul>
                     

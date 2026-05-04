@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router"
 import { useUserContext } from "../../hooks/useUserContext"
 import { FaHeart, FaRegHeart } from "react-icons/fa"
+import {getChampLoading} from '../../utils/helpers'
 
 
 
@@ -22,7 +23,7 @@ export const ChampionCard = ({champion}) => {
         toggleFavorite(champion.id);
     }
 
-    const cardImageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`
+    const cardImageUrl = getChampLoading(champion.id)
 
     return(
         <div className="col-6 col-md-4 col-lg-2 mb-4">

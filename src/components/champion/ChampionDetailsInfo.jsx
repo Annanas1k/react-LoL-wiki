@@ -2,6 +2,7 @@
 import { useUserContext } from "../../hooks/useUserContext";
 import { StatRow } from "./StatRow";
 import { FaHeart, FaRegHeart } from "react-icons/fa"
+import {getChampSplash} from '../../utils/helpers'
 
 
 export const ChampionDetailsInfo = ({ champion }) => {
@@ -33,7 +34,7 @@ export const ChampionDetailsInfo = ({ champion }) => {
             backgroundColor: '#000' 
         }}>
             <div className="hero-bg" style={{
-                backgroundImage: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg)`,
+                backgroundImage: `url(${getChampSplash(champion.id)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'top center',
                 position: 'absolute',

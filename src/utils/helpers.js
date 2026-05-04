@@ -1,9 +1,14 @@
 export const getChampImage = (version, id) => 
     `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${id}.png`;
 
-export const getChampSplash = (id) => 
-    `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`;
+export const getChampLoading = (id) =>
+    `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${id}_0.jpg`
 
+export const getChampSplash = (id) =>
+     `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`;
+
+export const getChampSkinSplash = (id, num) =>
+    `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${num}.jpg`
 
 export const getAbilityVideoUrl = (key, index) => {
     // Transformăm key în format de 4 cifre (ex: 103 -> 0103)

@@ -12,6 +12,7 @@ import "./App.css"
 import { UserProfile } from "./pages/auth/Profile"
 import { ProtectedRoute } from "./components/Layout/ProtectedRoute"
 import { NotFound } from "./pages/NotFound/NotFound"
+import { ItemsPage } from "./pages/ItemsPage/ItemsPage"
 function App() {
 
   return (
@@ -19,19 +20,27 @@ function App() {
      <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="/items" element={<ItemsPage />} >
+          <Route path=":section"  element={<ItemsPage />}/>
+        </Route>
+
         <Route path="/champions">
           <Route index element={<ChampionPage />}/>
           <Route path=":championId"  element={<ChampionDetails />}/>
 
         </Route>
+
         <Route path="/auth" >
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
+
         <Route path="/test" element={<Test />} />
+
         <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<UserProfile />} />
         </Route>
+
         <Route path="*"  element={<NotFound />}/>
       </Route>
 

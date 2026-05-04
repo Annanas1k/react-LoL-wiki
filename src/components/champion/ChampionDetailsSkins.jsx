@@ -4,6 +4,7 @@ import { Navigation, Pagination, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import {getChampSkinSplash} from '../../utils/helpers'
 
 export const ChampionDetailsSkins = ({champion}) =>{
     const skins = champion.skins.filter(skin => !skin.parentSkin)
@@ -21,7 +22,7 @@ export const ChampionDetailsSkins = ({champion}) =>{
                 {/* Imaginea Mare (Splash Art Selectat) */}
                 <div className="main-skin-display mb-5 position-relative overflow-hidden" style={{ height: '90vh', borderRadius: '8px' }}>
                     <img 
-                        src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${activeSkin.num}.jpg`}
+                        src={getChampSkinSplash(champion.id, activeSkin.num)}
                         alt={activeSkin.name}
                         className="w-100 h-100 object-fit-cover"
                         style={{ transition: '0.5s ease-in-out'}}
@@ -52,7 +53,7 @@ export const ChampionDetailsSkins = ({champion}) =>{
                                 style={{ cursor: 'pointer' }}
                             >
                                 <img 
-                                    src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
+                                    src={getChampSkinSplash(champion.id, skin.num)}
                                     alt={skin.name}
                                     className="img-fluid border border-2"
                                     style={{ 
