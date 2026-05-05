@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { getAbilityVideoUrl } from '../../utils/helpers'
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+
 
 export const ChampionDetailsAbility = ({champion, version}) =>{
-
+    const { t } = useLanguageContext();
     const [selectedIndex, setSelectedIndex] = useState(0)
 
     const allAbilities = [
@@ -16,7 +18,7 @@ export const ChampionDetailsAbility = ({champion, version}) =>{
     return(
         <section className="abilities-section py-5 bg-dark text-white">
             <div className="container">
-                <h2 className="display-4 italic fw-bold text-center mb-5">ABILITIES</h2>
+                <h2 className="display-4 italic fw-bold text-center mb-5">{t('abilities')}</h2>
 
                 <div className="row align-items-center">
                     {/* Partea Stângă: Selectorul de Abilități */}

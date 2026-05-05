@@ -6,8 +6,11 @@ import { useSearchParams } from "react-router"
 
 import roles from "../../data/roles.json"
 import { ChampionListItem } from "../../components/champion/ChampionListItem"
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+
 
 export const ChampionPage = () =>{
+    const { t } = useLanguageContext();
     const {champions, loading, version} = useChampContext()
     const [searchParams, setSearchParams] = useSearchParams()
     const [viewMode, setViewMode] = useState(()=>{
@@ -54,8 +57,10 @@ export const ChampionPage = () =>{
     return (
         <div className="container-fluid py-5" style={{ maxWidth: '1400px' }}>
             <div className="text-center mb-5">
-                <h1 className="display-4 fw-bold italic text-riot-gold">CHAMPIONS</h1>
-                <div style={{ marginBottom: '20px' }}>
+                <h1 className="display-4 fw-bold italic text-riot-gold">
+                    {t('page_champions_title')}
+                </h1>
+                                <div style={{ marginBottom: '20px' }}>
                     <button 
                         className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
                         onClick={() => handleViewChange('grid')}
@@ -69,10 +74,11 @@ export const ChampionPage = () =>{
                         List
                     </button>
                 </div>
+
                 <div className="mt-4">
                     <input
                         type="text"
-                        placeholder="Search champion..."
+                        placeholder={t('search_placeholder')}
                         value={query}
                         onChange={(e) => updateFilter("search", e.target.value)}
                     />
@@ -84,27 +90,17 @@ export const ChampionPage = () =>{
                         onClick={() => updateFilter("role", "All")}
                         style={{ cursor: 'pointer', opacity: activeRole === "All" ? 1 : 0.5 }}
                     >
-                        <div style={{ fontWeight: activeRole === "All" ? 'bold' : 'normal' }}>ALL</div>
+                        <div style={{ fontWeight: activeRole === "All" ? 'bold' : 'normal' }}>
+                            {t('role_all')}
+                        </div>
                     </div>
 
                     {roles.map(role => (
-                        <div 
-                            key={role.id}
-                            onClick={() => updateFilter("role", role.slug)}
-                            style={{ 
-                                cursor: 'pointer', 
-                                textAlign: 'center',
-                                opacity: activeRole === role.slug ? 1 : 0.5,
-                                transition: '0.3s'
-                            }}
-                        >
-                            <img 
-                                src={role.iconUrl} 
-                                alt={role.name} 
-                                style={{ width: '30px', height: '30px', display: 'block', margin: '0 auto' }} 
-                            />
+                        <div key={role.id} onClick={() => updateFilter("role", role.slug)} style={{ cursor: 'pointer', textAlign: 'center', opacity: activeRole === role.slug ? 1 : 0.5 }}>
+                            <img src={role.iconUrl} alt={role.id} style={{ width: '30px', height: '30px', display: 'block', margin: '0 auto' }} />
+                            
                             <span style={{ fontSize: '10px', fontWeight: activeRole === role.slug ? 'bold' : 'normal' }}>
-                                {role.name}
+                                {t(`role_name_${role.id}`)}
                             </span>
                         </div>
                     ))}

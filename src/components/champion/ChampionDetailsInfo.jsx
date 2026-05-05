@@ -3,11 +3,15 @@ import { useUserContext } from "../../hooks/useUserContext";
 import { StatRow } from "./StatRow";
 import { FaHeart, FaRegHeart } from "react-icons/fa"
 import {getChampSplash} from '../../utils/helpers'
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+
 
 
 export const ChampionDetailsInfo = ({ champion }) => {
 
     const {user, toggleFavorite} = useUserContext()
+    const { t } = useLanguageContext();
+
 
     const isFavorite = user?.favorites?.includes(champion.id);
 
@@ -65,12 +69,12 @@ export const ChampionDetailsInfo = ({ champion }) => {
 
                         <div className="d-flex gap-3">
                             <div className="p-3 border border-secondary bg-dark-blue text-center" style={{ minWidth: '140px', backgroundColor: 'rgba(10, 20, 40, 0.7)', border: '1px solid #c4b00055' }}>
-                                <p className="text-secondary small mb-1">ROLE</p>
+                                <p className="text-secondary small mb-1">{t('role_stats')}</p>
                                 <h6 className="text-riot-gold fw-bold mb-0">{champion.tags.join("/").toUpperCase()}</h6>
                             </div>
 
                             <div className="p-3 border border-secondary bg-dark-blue text-center" style={{ minWidth: '140px', backgroundColor: 'rgba(10, 20, 40, 0.7)', border: '1px solid #c4b00055' }}>
-                                <p className="text-secondary small mb-1">DIFFICULTY</p>
+                                <p className="text-secondary small mb-1">{t('difficulty_stats')}</p>
                                 <h6 className="text-riot-gold fw-bold mb-0">{difficultyLabel}</h6>
                             </div>
                              <button 
@@ -79,9 +83,9 @@ export const ChampionDetailsInfo = ({ champion }) => {
                                             style={{ zIndex: 10, fontSize: '1.5rem', textDecoration: 'none' }}
                                         >
                                             {isFavorite ? (
-                                                <span>delete from favorites<FaHeart /></span>  // Inima plină dacă e favorit
+                                                <span>{t('delete_from_favorite')}<FaHeart /></span>  // Inima plină dacă e favorit
                                             ) : (
-                                                <span>Add to vavorites <FaRegHeart /></span> // Inima goală
+                                                <span>{t('add_to_favorite')}<FaRegHeart /></span> // Inima goală
                                             )}
                                         </button>
                         </div>

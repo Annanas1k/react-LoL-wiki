@@ -1,8 +1,12 @@
 import { useEffect, useMemo, useState } from "react"
 import { fetchChampions, fetchItems, fetchItemsTree, fetchRunes, getLatestVersion } from "../services/api"
 import { ChampContext } from "./createContext"
+import { useLanguageContext } from "../hooks/useLanguageContext"
 
 export const ChampProvider = ({ children }) => {
+  const { locale } = useLanguageContext()
+  const riotLocale = useMemo(() => locale === 'en' ? 'en_US' : 'ro_RO', [locale]);
+
   const [champions, setChampions] = useState([])
   const [items, setItems] = useState({})
   const [itemTree, setItemTree] = useState([])
@@ -13,14 +17,15 @@ export const ChampProvider = ({ children }) => {
   useEffect(() => {
     const loadData = async () => {
       try {
+        setLoading(true) 
         const latestVersion = await getLatestVersion()
         setVersion(latestVersion)
 
         const cachedVersion = localStorage.getItem('riot_version')
-        const cachedChamp = localStorage.getItem('champions_data')
-        const cachedItems = localStorage.getItem('items_data')
-        const cachedItemsTree = localStorage.getItem('items_tree_data')
-        const cachedRunes     = localStorage.getItem('runes_data')
+        const cachedChamp = localStorage.getItem(`champions_data_${riotLocale}`)
+        const cachedItems = localStorage.getItem(`items_data_${riotLocale}`)
+        const cachedItemsTree = localStorage.getItem(`items_tree_data_${riotLocale}`)
+        const cachedRunes     = localStorage.getItem(`runes_data_${riotLocale}`)
 
         if (cachedVersion === latestVersion 
               && cachedChamp 
@@ -35,18 +40,18 @@ export const ChampProvider = ({ children }) => {
           setLoading(false)
         } else {
           const [champsData, itemsData, itemsTreeData, runesData] = await Promise.all([
-            fetchChampions(latestVersion),
-            fetchItems(latestVersion),
-            fetchItemsTree(latestVersion),
-            fetchRunes(latestVersion)
+            fetchChampions(latestVersion, riotLocale),
+            fetchItems(latestVersion, riotLocale),
+            fetchItemsTree(latestVersion, riotLocale),
+            fetchRunes(latestVersion, riotLocale)
           ])
 
           const champsArray = Object.values(champsData)
-          localStorage.setItem('champions_data', JSON.stringify(champsArray))
-          localStorage.setItem('items_data', JSON.stringify(itemsData))
-          localStorage.setItem('items_tree_data', JSON.stringify(itemsTreeData))
+          localStorage.setItem(`champions_data_${riotLocale}`, JSON.stringify(champsArray))
+          localStorage.setItem(`items_data_${riotLocale}`, JSON.stringify(itemsData))
+          localStorage.setItem(`items_tree_data_${riotLocale}`, JSON.stringify(itemsTreeData))
           localStorage.setItem('riot_version', latestVersion)
-          localStorage.setItem('runes_data', JSON.stringify(runesData))
+          localStorage.setItem(`runes_data_${riotLocale}`, JSON.stringify(runesData))
 
           setChampions(champsArray)
           setItems(itemsData)
@@ -61,7 +66,7 @@ export const ChampProvider = ({ children }) => {
     }
 
     loadData()
-  }, [])
+  }, [riotLocale]) 
 
   const value = useMemo(() => ({
     champions, items, itemTree, runes, loading, version

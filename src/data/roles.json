@@ -1,50 +1,32 @@
 [
   {
     "id": "assassins",
-    "name": "ASSASSINS",
     "slug": "Assassin",
-    "description": "Whether you like to dive straight into the fray, support your teammates, or something in between, there’s a spot for you on the Rift.",
-    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-assassin.png",
-    "bgImage": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
+    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-assassin.png"
   },
   {
     "id": "fighters",
-    "name": "FIGHTERS",
     "slug": "Fighter",
-    "description": "Fighters are short-range combatants who possess a mix of offensive and defensive capabilities.",
-    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-fighter.png",
-    "bgImage": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Garen_0.jpg"
+    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-fighter.png"
   },
   {
     "id": "mages",
-    "name": "MAGES",
     "slug": "Mage",
-    "description": "Mages are champions who typically possess great reach, ability-based area of effect damage and control.",
-    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-mage.png",
-    "bgImage": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg"
+    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-mage.png"
   },
   {
     "id": "marksmen",
-    "name": "MARKSMEN",
     "slug": "Marksman",
-    "description": "Marksmen are remote attackers who typically sacrifice defensive power and utility for great incremental damage.",
-    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-marksman.png",
-    "bgImage": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg"
+    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-marksman.png"
   },
   {
     "id": "supports",
-    "name": "SUPPORTS",
     "slug": "Support",
-    "description": "Supports make plays by facilitating their allies' success through shields, heals, or crowd control.",
-    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-support.png",
-    "bgImage": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg"
+    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-support.png"
   },
   {
     "id": "tanks",
-    "name": "TANKS",
     "slug": "Tank",
-    "description": "Tanks are durable, front-line champions who help lock down enemies and start fights.",
-    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-tank.png",
-    "bgImage": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Leona_0.jpg"
+    "iconUrl": "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-details/global/default/role-icon-tank.png"
   }
 ]

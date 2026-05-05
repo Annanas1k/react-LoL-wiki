@@ -1,0 +1,122 @@
+{
+  "nav_learn": "Learn To Play",
+  "nav_champions": "Champions",
+  "nav_items": "Items",
+  "nav_runes": "Runes",
+  "btn_login": "SIGN IN",
+  "btn_register": "REGISTER",
+  "btn_logout": "LOGOUT",
+
+
+  "footer_copyright_notice": "League of Legends and all related logos are trademarks, service marks and/or registered trademarks of Riot Games, Inc.",
+  "footer_privacy": "Privacy Notice",
+  "footer_terms": "Terms of Service",
+  "footer_cookies": "Cookie Preferences",
+
+
+  "hero_eyebrow": "Welcome to the Rift",
+  "hero_title_part1": "Learn to",
+  "hero_title_accent": "Play",
+  "hero_description": "League of Legends is a team-based strategy game where two teams of five powerful champions battle to destroy the other's base. Master the essentials and climb the ranks.",
+  "hero_cta": "Start Learning",
+  "hero_scroll": "Scroll",
+  "stat_champions": "Champions",
+  "stat_team": "Team Based",
+  "stat_lanes": "Lanes",
+  "stat_strategies": "Strategies",
+
+
+  "champ_loading": "loading...",
+  "champ_404": "champion 404",
+
+
+  "runes_title": "League of Legends",
+  "runes_path_start": "Choose your",
+  "runes_path_accent": "Path",
+
+  "page_champions_title": "CHAMPIONS",
+  "search_placeholder": "Search champion...",
+  "role_all": "ALL",
+  "role_name_assassins": "ASSASSINS",
+  "role_name_fighters": "FIGHTERS",
+  "role_name_mages": "MAGES",
+  "role_name_marksmen": "MARKSMEN",
+  "role_name_supports": "SUPPORTS",
+  "role_name_tanks": "TANKS",
+
+
+  "btn_clear": "CLEAR",
+  "filter_damage": "Attack Damage",
+  "filter_crit": "Critical Strike",
+  "filter_as": "Attack Speed",
+  "filter_onhit": "On-Hit Effects",
+  "filter_armor_pen": "Armor Penetration",
+  "filter_ap": "Ability Power",
+  "filter_mana": "Mana & Regeneration",
+  "filter_mag_pen": "Magic Penetration",
+  "filter_health": "Health & Regeneration",
+  "filter_armor": "Armor",
+  "filter_mr": "Magic Resistance",
+  "filter_haste": "Ability Haste",
+  "filter_movement": "Movement",
+  "filter_lifesteal": "Life Steal & Vamp",
+
+
+  "item_search": "Item Search",
+  "gold_sort": "Gold",
+  "name_sort": "Name",
+
+
+  "add_to_favorite": "Add to favorite",
+  "delete_from_favorite": "Delete from favorite",
+  "role_stats": "ROLE",
+  "difficulty_stats": "DIFFICULTY",
+
+  "avaible_skins": "AVAILABLE SKINS",
+  "abilities": "ABILITIES",
+
+
+  "abilities_title": "Master Your",
+  "abilities_accent": "Tools",
+  "tab_summoners": "Summoner Spells",
+  "tab_items": "Items & Gold",
+  "phase_starter_items_name": "Starter Items",
+  "phase_starter_items_desc": "Begin each game with a small amount of gold (500). Starter items give you sustain through the laning phase.",
+  "phase_core_build_name": "Core Build",
+  "phase_core_build_desc": "Your core items define your role. These usually cost 2,500–3,500 gold and are completed by mid-game.",
+  "phase_full_build_name": "Full Build",
+  "phase_full_build_desc": "A full build consists of 6 items. Reaching this stage means your champion has reached maximum power potential.",
+  "gold_src_minions": "Minion kills (CS)",
+  "gold_src_kills": "Champion kills",
+  "gold_src_turrets": "Turret plates",
+  "gold_src_passive": "Passive income",
+
+
+  "lanes_header": "Choose your Lane",
+  "difficulty_label": "Difficulty",
+  "lane_top_name": "Top Lane",
+  "lane_top_role": "Fighter / Tank",
+  "lane_top_desc": "The top lane is a solo island — long, isolated fights where self-sufficiency is everything.",
+  "lane_jungle_name": "Jungle",
+  "lane_jungle_role": "Carry / Tank / Support",
+  "lane_jungle_desc": "The jungler roams the entire map, farming neutral monsters and ambushing unsuspecting enemies.",
+  "lane_mid_name": "Mid Lane",
+  "lane_mid_role": "Mage / Assassin",
+  "lane_mid_desc": "Mid lane is the center of the action. Mid laners are high-burst mages or slippery assassins.",
+  "lane_bot_name": "Bot Lane",
+  "lane_bot_role": "Marksman",
+  "lane_bot_desc": "Bot laners are ranged champions who deal massive damage in the late game.",
+  "lane_support_name": "Support",
+  "lane_support_role": "Healer / Tank / Mage",
+  "lane_support_desc": "Supports are the backbone of the team. They protect and enable the entire team.",
+  "lane_info": "There are five positions that make up the recommended team comp for the game. Each lane lends itself to certain kinds of champions and roles—try them all or lock in to the lane that calls you.",
+
+
+
+  "map_eyebrow": "The Summoner's Rift",
+  "map_title": "Know the",
+  "map_accent": "Map",
+  "map_obj_label": "Strategic Objective",
+  "map_pro_tip": "PRO TIP"
+
+}

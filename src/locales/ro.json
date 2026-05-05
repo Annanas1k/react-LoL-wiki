@@ -1,0 +1,125 @@
+{
+  "nav_learn": "Învață să joci",
+  "nav_champions": "Campioni",
+  "nav_items": "Obiecte",
+  "nav_runes": "Rune",
+  "btn_login": "CONECTARE",
+  "btn_register": "ÎNREGISTRARE",
+  "btn_logout": "DECONECTARE",
+
+
+  "footer_copyright_notice": "League of Legends și toate logo-urile aferente sunt mărci comerciale, mărci de servicii și/sau mărci înregistrate ale Riot Games, Inc.",
+  "footer_privacy": "Politica de Confidențialitate",
+  "footer_terms": "Termeni și Condiții",
+  "footer_cookies": "Preferințe Cookie",
+
+
+  "hero_eyebrow": "Bun venit în Rift",
+  "hero_title_part1": "Învață să",
+  "hero_title_accent": "Te joci",
+  "hero_description": "League of Legends este un joc de strategie pe echipe, în care două echipe de câte cinci campioni puternici se luptă pentru a distruge baza adversă. Stăpânește elementele de bază și urcă în clasament.",
+  "hero_cta": "Începe să înveți",
+  "hero_scroll": "Derulează",
+  "stat_champions": "Campioni",
+  "stat_team": "Pe echipe",
+  "stat_lanes": "Culoare",
+  "stat_strategies": "Strategii",
+
+
+  "champ_loading": "se incarca...",
+  "champ_404": "champion 404",
+
+
+  "runes_title": "League of Legends",
+  "runes_path_start": "Alege-ți",
+  "runes_path_accent": "Calea",
+
+  "page_champions_title": "CAMPIONI",
+  "search_placeholder": "Caută un campion...",
+  "role_all": "TOȚI",
+  "role_name_assassins": "ASASINI",
+  "role_name_fighters": "LUPTĂTORI",
+  "role_name_mages": "MAGI",
+  "role_name_marksmen": "ȚINTAȘI",
+  "role_name_supports": "SUPORT",
+  "role_name_tanks": "TANCURI",
+
+
+  "btn_clear": "ȘTERGE",
+  "filter_damage": "Daune din atac",
+  "filter_crit": "Lovitură critică",
+  "filter_as": "Viteză de atac",
+  "filter_onhit": "Efecte la impact",
+  "filter_armor_pen": "Penetrare armură",
+  "filter_ap": "Puterea abilităților",
+  "filter_mana": "Mană și regenerare",
+  "filter_mag_pen": "Penetrare magică",
+  "filter_health": "Viață și regenerare",
+  "filter_armor": "Armură",
+  "filter_mr": "Rezistență magică",
+  "filter_haste": "Graba abilităților",
+  "filter_movement": "Mişcare",
+  "filter_lifesteal": "Furt de viață și Vampirism",
+
+
+  "item_search": "Cauta Obiect",
+  "gold_sort": "Aur",
+  "name_sort": "Nume",
+
+  "add_to_favorite": "Adauga la favorite",
+  "delete_from_favorite": "Sterge  din favorite",
+  "role_stats": "ROL",
+  "difficulty_stats": "DIFICULTATE",
+
+  
+  "avaible_skins": "SKINURI DISPONIBILE",
+  "abilities": "ABILITATI",
+
+
+  "abilities_title": "Stăpânește-ți",
+  "abilities_accent": "Uneltele",
+  "tab_summoners": "Vrajile Invocatorului",
+  "tab_items": "Obiecte și Aur",
+  "phase_starter_items_name": "Obiecte de început",
+  "phase_starter_items_desc": "Începe fiecare meci cu o sumă mică de aur (500). Obiectele de început îți oferă sustenabilitate în faza de culoare.",
+  "phase_core_build_name": "Obiecte de bază",
+  "phase_core_build_desc": "Obiectele de bază îți definesc rolul. Acestea costă de obicei 2.500–3.500 aur și sunt finalizate până la mijlocul jocului.",
+  "phase_full_build_name": "Echipament complet",
+  "phase_full_build_desc": "Un build complet constă în 6 obiecte. Atingerea acestei etape înseamnă că campionul tău a ajuns la potențialul maxim de putere.",
+  "gold_src_minions": "Uciderea minionilor (CS)",
+  "gold_src_kills": "Uciderea campionilor",
+  "gold_src_turrets": "Plăci de turn",
+  "gold_src_passive": "Venit pasiv",
+
+
+  "lanes_header": "Alege-ți culoarul",
+  "difficulty_label": "Dificultate",
+  "lane_top_name": "Culoarul de sus",
+  "lane_top_role": "Luptător / Tanc",
+  "lane_top_desc": "Culoarul de sus este o insulă solo — lupte lungi și izolate unde autosuficiența este totul.",
+  "lane_jungle_name": "Junglă",
+  "lane_jungle_role": "Carry / Tanc / Suport",
+  "lane_jungle_desc": "Junglerul străbate întreaga hartă, ucide monștri neutri și atacă inamicii prin surprindere.",
+  "lane_mid_name": "Culoarul de mijloc",
+  "lane_mid_role": "Mag / Asasin",
+  "lane_mid_desc": "Culoarul de mijloc este centrul acțiunii. Jucătorii de aici sunt magi cu daune mari sau asasini rapizi.",
+  "lane_bot_name": "Culoarul de jos",
+  "lane_bot_role": "Țintaș",
+  "lane_bot_desc": "Jucătorii de pe culoarul de jos sunt campioni la distanță care provoacă daune masive în fazele târzii ale jocului.",
+  "lane_support_name": "Suport",
+  "lane_support_role": "Vindecător / Tanc / Mag",
+  "lane_support_desc": "Jucătorii de suport sunt coloana vertebrală a echipei. Aceștia își protejează și își ajută aliații.",
+  "lane_info": "Există cinci poziții care alcătuiesc componența recomandată a echipei pentru joc. Fiecare linie se pretează la anumite tipuri de campioni și roluri - încearcă-le pe toate sau blochează-te pe linia care te cheamă.",
+
+
+  "map_eyebrow": "Summoner's Rift",
+  "map_title": "Cunoaște",
+  "map_accent": "Harta",
+  "map_obj_label": "Obiectiv Strategic",
+  "map_pro_tip": "SFAT PROFESIONIST"
+
+
+
+
+
+}

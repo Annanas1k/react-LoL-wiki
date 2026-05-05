@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router'
 import { useChampContext } from '../../hooks/useChampContext'
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+import { LoadingSpinner } from '../NotFound/LoadingSpinner'
+
 
 const PATH_SUBTITLES = {
   Precision: 'Become a legend',
@@ -20,13 +23,10 @@ const PATH_COLORS = {
 export const RunesPage = () => {
   const { runes: paths, loading, } = useChampContext()
   const navigate = useNavigate()
+   const { t } = useLanguageContext();
 
-  if (loading) return (
-    <div className="runes-loading">
-      <div className="runes-loading-bar" />
-      <span>LOADING RUNES...</span>
-    </div>
-  )
+
+  if (loading) return <LoadingSpinner />
 
   return (
     <div className="runes-overview">
@@ -238,8 +238,12 @@ export const RunesPage = () => {
         @keyframes shimmer { to { left: 100%; } }
       `}</style>
 
-      <div className="runes-title">League of Legends</div>
-      <div className="runes-heading">Choose your <span>Path</span></div>
+      <div className="runes-title">
+        {t('runes_title')}
+      </div>
+      <div className="runes-heading">
+        {t('runes_path_start')} <span>{t('runes_path_accent')}</span>
+      </div>
 
       <div className="runes-paths">
         {paths.map(path => {

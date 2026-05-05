@@ -1,73 +1,78 @@
 import { useState } from 'react';
 import lanesData from '../../data/lanesData.json';
+import { useLanguageContext } from '../../hooks/useLanguageContext';
 
 export const LanesSection = () => {
+  const { t } = useLanguageContext();
   const [active, setActive] = useState('top');
   const lane = lanesData.lanes.find(l => l.id === active);
 
   return (
-    <section className="py-5" style={{ background: '#010a13', color: '#f0e6d2' }}>
+    <section className="py-5" style={{ background: '#010a13', color: '#f0e6d2', overflow: 'hidden' }}>
       <div className="container">
-        {/* Header */}
-        <div className="text-center mb-5">
-          <h2 className="display-4 fw-bold text-uppercase" style={{ color: '#c8a84b' }}>
-            Choose your Lane
-          </h2>
-        </div>
+        <div className="row align-items-center min-vh-75">
+          
+          {/* COLOANA STÂNGA: Control Panel */}
+          <div className="col-lg-5 text-center text-lg-start">
+            <h2 className="display-3 fw-bold text-uppercase mb-3 italic-style" style={{ letterSpacing: '2px' }}>
+              {t('lanes_header')}
+            </h2>
+            <p className="mb-5 opacity-75 fw-light" style={{ maxWidth: '450px', fontSize: '0.95rem' }}>
+              There are five positions that make up the recommended team comp for the game. Each lane lends itself to certain kinds of champions and roles—try them all or lock in to the lane that calls you.
+            </p>
 
-        <div className="row g-4">
-          {/* Navigație Stânga */}
-          <div className="col-lg-3">
-            <div className="d-flex flex-column gap-2">
+            <div className="d-flex justify-content-center justify-content-lg-start gap-3">
               {lanesData.lanes.map(l => (
-                <button
-                  key={l.id}
+                <div 
+                  key={l.id} 
                   onClick={() => setActive(l.id)}
-                  className={`btn d-flex align-items-center gap-3 p-3 text-start border-1 ${
-                    active === l.id ? 'btn-outline-warning active' : 'btn-outline-secondary text-light'
-                  }`}
-                  style={{ background: active === l.id ? 'rgba(200, 168, 75, 0.1)' : 'rgba(255,255,255,0.05)' }}
+                  className="text-center transition-all"
+                  style={{ cursor: 'pointer', width: '75px' }}
                 >
-                  <img src={l.icon} alt="" width="40" height="40" />
-                  <span className="fw-bold text-uppercase">{l.name}</span>
-                </button>
+                  <div className={`position-relative d-inline-block p-1 rounded-circle mb-2 ${active === l.id ? 'active-ring' : 'inactive-ring'}`}>
+                    <img 
+                      src={l.icon} 
+                      alt={l.id} 
+                      width="75" height="75" 
+                      style={{ filter: active === l.id ? 'none' : 'brightness(0.4) grayscale(100%)' }}
+                    />
+                  </div>
+                  <div className="fw-bold text-uppercase" style={{ fontSize: '0.65rem', color: active === l.id ? '#c8a84b' : '#555', letterSpacing: '1px' }}>
+                    {t(`lane_${l.id}_name`)}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Conținut Dreapta */}
-          <div className="col-lg-9">
-            {lane && (
-              <div className="card h-100 border-warning" style={{ background: '#0a0f13', border: '1px solid #c8a84b' }}>
-                <div className="row g-0 align-items-center">
-                  <div className="col-md-6 p-4">
-                    <span className="text-warning text-uppercase small fw-bold">{lane.role}</span>
-                    <h3 className="display-6 fw-bold my-3 text-light">{lane.name}</h3>
-                    <p className="lead fs-6" style={{ opacity: 0.9 }}>{lane.desc}</p>
-                    
-                    <div className="mt-4 p-3 rounded" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                      <span className="fw-bold">Difficulty:</span>
-                      <div className="d-inline-block ms-2">
-                         {lane.difficulty} / 5
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="col-md-6">
-                    <img 
-                      src={lane.photo} 
-                      alt={lane.name} 
-                      className="img-fluid rounded-end"
-                      style={{ objectFit: 'cover', minHeight: '300px' }}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+          <div className="col-lg-7 position-relative text-center mt-5 mt-lg-0">
+            <div className="position-relative d-inline-block">
+              {/* Imaginea hărții preluată din JSON (photo) */}
+              <img 
+                src={lane?.photo} 
+                alt="Map View" 
+                className="img-fluid animate-fade-in"
+                style={{ 
+                  maxHeight: '500px', 
+                  maskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
+                  WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 100%)'
+                }}
+              />
+            </div>
 
+            {/* Info Lane sub hartă */}
+            <div className="mt-4 animate-fade-in">
+              <h3 className="h4 fw-bold text-uppercase italic-style mb-2">{t(`lane_${lane.id}_name`)}</h3>
+              <p className="small opacity-75 mx-auto" style={{ maxWidth: '500px' }}>
+                {t(`lane_${lane.id}_desc`)}
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+    
     </section>
   );
 };

@@ -1,21 +1,26 @@
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+
+
 const FILTER_TAGS = [
-  { label: "Attack Damage", value: "Damage" },
-  { label: "Critical Strike", value: "CriticalStrike" },
-  { label: "Attack Speed", value: "AttackSpeed" },
-  { label: "On-Hit Effects", value: "OnHit" },
-  { label: "Armor Penetration", value: "ArmorPenetration" },
-  { label: "Ability Power", value: "SpellDamage" },
-  { label: "Mana & Regeneration", value: "Mana" },
-  { label: "Magic Penetration", value: "MagicPenetration" },
-  { label: "Health & Regeneration", value: "Health" },
-  { label: "Armor", value: "Armor" },
-  { label: "Magic Resistance", value: "SpellBlock" },
-  { label: "Ability Haste", value: "CooldownReduction" },
-  { label: "Movement", value: "Boots" },
-  { label: "Life Steal & Vamp", value: "LifeSteal" },
+  { langKey: "filter_damage", value: "Damage" },
+  { langKey: "filter_crit", value: "CriticalStrike" },
+  { langKey: "filter_as", value: "AttackSpeed" },
+  { langKey: "filter_onhit", value: "OnHit" },
+  { langKey: "filter_armor_pen", value: "ArmorPenetration" },
+  { langKey: "filter_ap", value: "SpellDamage" },
+  { langKey: "filter_mana", value: "Mana" },
+  { langKey: "filter_mag_pen", value: "MagicPenetration" },
+  { langKey: "filter_health", value: "Health" },
+  { langKey: "filter_armor", value: "Armor" },
+  { langKey: "filter_mr", value: "SpellBlock" },
+  { langKey: "filter_haste", value: "CooldownReduction" },
+  { langKey: "filter_movement", value: "Boots" },
+  { langKey: "filter_lifesteal", value: "LifeSteal" },
 ]
 
 export const ItemSidebar = ({ selectedTags, onTagToggle, onClear }) => {
+      const { t } = useLanguageContext();
+
   return (
     <div className="item-sidebar">
       <style>{`
@@ -110,12 +115,12 @@ export const ItemSidebar = ({ selectedTags, onTagToggle, onClear }) => {
       `}</style>
 
       <button className="sidebar-clear" onClick={onClear}>
-        ✕ CLEAR
+        ✕ {t('btn_clear')}
       </button>
 
       <div className="sidebar-tags">
         {FILTER_TAGS.map(tag => {
-          const checked = selectedTags.has(tag.value)
+          const checked = selectedTags.has(tag.value);
           return (
             <div
               key={tag.value}
@@ -123,9 +128,12 @@ export const ItemSidebar = ({ selectedTags, onTagToggle, onClear }) => {
               onClick={() => onTagToggle(tag.value)}
             >
               <div className={`sidebar-checkbox${checked ? ' checked' : ''}`} />
-              <span className="sidebar-tag-label">{tag.label}</span>
+              <span className="sidebar-tag-label">
+                {/* Traducem eticheta folosind cheia de limbă */}
+                {t(tag.langKey)}
+              </span>
             </div>
-          )
+          );
         })}
       </div>
     </div>

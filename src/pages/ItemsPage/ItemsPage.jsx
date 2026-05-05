@@ -1,11 +1,15 @@
-import { useMemo, useState, useCallback } from 'react'
+import { useMemo, useCallback } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router'
 import { useChampContext } from "../../hooks/useChampContext"
 import { ItemSidebar } from "../../components/items/ItemSidebar"
 import { ItemSectionAccordion } from "../../components/items/ItemSectionAccordion"
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+
 
 export const ItemsPage = () => {
+  const {  t } = useLanguageContext();
   const { items, loading, version, itemTree } = useChampContext()
+  console.log(items)
   const { section } = useParams()
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -272,7 +276,7 @@ export const ItemsPage = () => {
             </svg>
             <input
               className="items-search"
-              placeholder="Item Search"
+              placeholder={t('item_search')}
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
@@ -282,9 +286,9 @@ export const ItemsPage = () => {
             value={sort}
             onChange={e => setSort(e.target.value)}
           >
-            <option value="gold">Gold ▲</option>
-            <option value="gold-desc">Gold ▼</option>
-            <option value="name">Name</option>
+            <option value="gold">{t('gold_sort')} ▲</option>
+            <option value="gold-desc">{t('gold_sort')} ▼</option>
+            <option value="name">{t('name_sort')}</option>
           </select>
         </div>
 

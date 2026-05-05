@@ -5,8 +5,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import {getChampSkinSplash} from '../../utils/helpers'
+import { useLanguageContext } from '../../hooks/useLanguageContext'
+
 
 export const ChampionDetailsSkins = ({champion}) =>{
+    const { t } = useLanguageContext();
     const skins = champion.skins.filter(skin => !skin.parentSkin)
 
     const [activeSkin, setActiveSkin] = useState(skins[0])
@@ -17,9 +20,8 @@ export const ChampionDetailsSkins = ({champion}) =>{
     return(
         <section className="skins-section py-5 bg-black mt-5">
             <div className="container-fluid px-5">
-                <h2 className="display-5 fw-bold italic text-white mb-5">AVAILABLE SKINS</h2>
+                <h2 className="display-5 fw-bold italic text-white mb-5">{t('avaible_skins')}</h2>
 
-                {/* Imaginea Mare (Splash Art Selectat) */}
                 <div className="main-skin-display mb-5 position-relative overflow-hidden" style={{ height: '90vh', borderRadius: '8px' }}>
                     <img 
                         src={getChampSkinSplash(champion.id, activeSkin.num)}
@@ -32,7 +34,6 @@ export const ChampionDetailsSkins = ({champion}) =>{
                     </div>
                 </div>
 
-                {/* Slider-ul cu Thumbnails (Miniaturi) */}
                 <Swiper
                     modules={[Navigation, Pagination, Mousewheel]}
                     spaceBetween={20}
