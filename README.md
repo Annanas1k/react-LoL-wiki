@@ -10,33 +10,47 @@ An advanced web platform developed for exploring the League of Legends ecosystem
 *Secure access interface with dynamic backgrounds (Aatrox/Yasuo) and real-time validations.*
 | Authentication | Create account |
 | :---: | :---: |
-| ![Login screenshot](image.png) | ![Register screenshot](image-1.png) |
+| ![Login screenshot](./screenshots/image.png) | ![Register screenshot](./screenshots/image-1.png) |
 | *Logic: UserContext & Session persistence.* | *Logic: Input validation and labels in multiple languages.* |
 
 ### ⚔️ Champion Universe
 *Complex filtering and visualization system for champion data.*
 | Champion Gallery | Details & Lore |
 | :---: | :---: |
-| ![Champions Screenshot](image-2.png) | ![Champion Details Screenshot](image-3.png) |
+| ![Champions Screenshot](./screenshots/image-2.png) | ![Champion Details Screenshot](./screenshots/image-3.png) |
 | *Adaptive Grid: col-xl-5 with LoL card aspect ratio.* | *Dynamic Rendering: Skills, Skins, and Stats.* |
+
+| Champion Abilities | Champion Skins |
+| :---: | :---: |
+| ![Champions Abilies](./screenshots/image-6.png) | ![Champion Skins](/screenshots/image-7.png) |
+| *Dynamic Rendering: Abilities.* | *Dynamic Rendering: Skins.* |
+
 
 ### 🛠️ Gear & Strategy (Item Shop)
 *The most complex section, including recipe trees and URL synchronization.*
 | Item Shop | Recipe Tree and Popover |
 | :---: | :---: |
-| ![Item Screenshot](image-4.png) | ![Recipe Tree Screenshot](image-5.png) |
+| ![Item Screenshot](./screenshots/image-4.png) | ![Recipe Tree Screenshot](./screenshots/image-5.png) |
 | *Advanced Filtering: useSearchParams & Accordion.* | *SVG Render: foreignObject for build-tree.* |
+
+### 💎 Runes
+*Complex Section, including all Runes tree.*
+| Runes Page | Runes Path Page |
+| :---: | :---: |
+| ![Runes](./screenshots/image-8.png) | ![Runes Detailing](./screenshots/image-9.png)|
+| *Runes Maping.* | *Dynamic Section Rendering: Runes tree.* |
 
 ---
 
-## 🛠️ Tech Stack & Senior React Concepts
+## 🛠️ Tech Stack & React Concepts
 
 ### ⚛️ Frontend Architecture
 * **Functional Components & Hooks**: Modern implementation based solely on Hooks (`useState`, `useEffect`, `useRef`).
 * **Advanced Memoization**: Using `useMemo` and `useCallback` to stabilize function references and prevent costly re-renders in lists of 160+ champions.
 * **Context API**: Centralized state management for:
-* `UserContext`: Authentication, favorites management, and backend synchronization.
-* `LanguageContext`: Custom i18n system for switching between RO/EN.
+* `UserContext`: Authentication, favorites management.
+* `LanguageContext`: Custom system for switching between RO/EN.
+* `ChampContext`: Custom system for data fetching and caching for best practices.
 
 ### 🎨 Design and UI (Hextech aesthetic)
 * **Dynamic CSS Injection**: Use of the `dangerouslySetInnerHTML` method to keep styles atomic and isolated inside components.
@@ -53,7 +67,7 @@ An advanced web platform developed for exploring the League of Legends ecosystem
 ## 🧠 Project Details & Development Environment
 
 * **Data Source**: Integration with the Dragon Data (Riot Games) JSON format for version agnostic data.
-* **Workflow**: Developed on **Fedora Linux** using **WebStorm IDE** for maximum productivity in the JavaScript system.
+* **Workflow**: Developed on **Fedora Linux** using **VSCODE** for maximum productivity in the JavaScript system.
 * **Standards**: The code follows the principles of **DRY (Don't Repeat Yourself)** and **KISS (Keep It Simple, Stupid)**.
 
 ---
