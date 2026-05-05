@@ -1,4 +1,4 @@
-import { useMemo,  useCallback } from 'react'
+import { useMemo, useState, useCallback } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router'
 import { useChampContext } from "../../hooks/useChampContext"
 import { ItemSidebar } from "../../components/items/ItemSidebar"
@@ -65,6 +65,12 @@ export const ItemsPage = () => {
       }
     }
     return [...byName.values()]
+  }, [items])
+
+  // Lookup map cu TOATE itemele (inclusiv componentele) dupa ID — pentru recipe tree
+  const allItemsMap = useMemo(() => {
+    if (!items || typeof items !== 'object') return {}
+    return items
   }, [items])
 
   const filteredItems = useMemo(() => {
@@ -290,6 +296,7 @@ export const ItemsPage = () => {
               version={version}
               isOpen={activeSection === cat.header.toLowerCase()}
               onToggle={() => handleSectionClick(cat.header)}
+              allItemsMap={allItemsMap}
             />
           ))}
         </div>

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { ItemGrid } from './ItemGrid'
 
-export const ItemSectionAccordion = ({ section, version, isOpen, onToggle }) => {
+export const ItemSectionAccordion = ({ section, version, isOpen, onToggle, allItemsMap }) => {
   const bodyRef = useRef(null)
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export const ItemSectionAccordion = ({ section, version, isOpen, onToggle }) => 
           {section.items.length === 0 ? (
             <div className="section-empty">No items match current filters</div>
           ) : (
-            <ItemGrid items={section.items} version={version} />
+            <ItemGrid items={section.items} version={version} allItemsMap={allItemsMap} />
           )}
         </div>
       </div>
