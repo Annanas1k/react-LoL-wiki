@@ -73,6 +73,11 @@ export const Header = () => {
                                 className={`btn-lang ${locale === 'ro' ? 'active-lang' : ''}`}
                                 onClick={() => toggleLanguage('ro')}
                             >RO</button>
+                            <span className="mx-2 opacity-25" style={{ color: '#c8a84b' }}>|</span>
+                            <button 
+                                className={`btn-lang ${locale === 'tu' ? 'active-lang' : ''}`}
+                                onClick={() => toggleLanguage('ru')}
+                            >RU</button>
                         </div>
                     </div>
                 </div>

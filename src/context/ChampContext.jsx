@@ -5,8 +5,16 @@ import { useLanguageContext } from "../hooks/useLanguageContext"
 
 export const ChampProvider = ({ children }) => {
   const { locale } = useLanguageContext()
-  const riotLocale = useMemo(() => locale === 'en' ? 'en_US' : 'ro_RO', [locale]);
-
+const riotLocale = useMemo(() => {
+  switch (locale) {
+    case 'ru':
+      return 'ru_RU';
+    case 'ro':
+      return 'ro_RO';
+    default:
+      return 'en_US';
+  }
+}, [locale]);
   const [champions, setChampions] = useState([])
   const [items, setItems] = useState({})
   const [itemTree, setItemTree] = useState([])

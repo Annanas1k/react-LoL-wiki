@@ -13,8 +13,16 @@ export const ChampionDetails =() =>{
     const  {championId} = useParams()
     const { version } = useChampContext()
     const { locale, t } = useLanguageContext();
-    const riotLocale = useMemo(() => locale === 'en' ? 'en_US' : 'ro_RO', [locale]);
-    const [champion, setChampion] = useState(null)
+const riotLocale = useMemo(() => {
+  switch (locale) {
+    case 'ru':
+      return 'ru_RU';
+    case 'ro':
+      return 'ro_RO';
+    default:
+      return 'en_US';
+  }
+}, [locale]);    const [champion, setChampion] = useState(null)
     const [loading, setLoading] = useState(true)
 
 
