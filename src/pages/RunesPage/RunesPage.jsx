@@ -31,7 +31,6 @@ export const RunesPage = () => {
   return (
     <div className="runes-overview">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Beaufort+for+LOL:wght@400;700&family=Spiegel:wght@400;700&display=swap');
 
         .runes-overview {
           min-height: 100vh;

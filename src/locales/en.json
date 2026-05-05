@@ -117,6 +117,43 @@
   "map_title": "Know the",
   "map_accent": "Map",
   "map_obj_label": "Strategic Objective",
-  "map_pro_tip": "PRO TIP"
+  "map_pro_tip": "PRO TIP",
+
+  "login_title": "LOGIN",
+  "register_title": "CREATE ACCOUNT",
+  "email_label": "EMAIL ADDRESS",
+  "email_placeholder": "name@example.com",
+  "username_label": "USERNAME",
+  "username_placeholder": "Choose a summoner name",
+  "password_label": "PASSWORD",
+  "password_placeholder": "Min. 8 characters",
+  "login_btn": "SIGN IN",
+  "register_btn": "CREATE ACCOUNT",
+  "loading": "AUTHENTICATING...",
+  "go_to_register": "NOT A MEMBER? JOIN US NOW",
+  "already_have_account": "ALREADY HAVE AN ACCOUNT?",
+  "error_default": "SOMETHING WENT WRONG",
+
+
+  "profile_rank_label": "SUMMONER",
+    "logout_btn": "SIGN OUT",
+    "favorites_title": "FAVORITE CHAMPIONS",
+    "search_favorites_placeholder": "SEARCH FAVORITES...",
+    "view_grid": "GRID",
+    "view_list": "LIST",
+    "no_search_results": "NO MATCHES FOUND IN YOUR FAVORITES.",
+    "no_favorites_yet": "COLLECT YOUR FAVORITES TO SEE THEM HERE.",
+
+
+    "edit_profile_title": "EDIT SETTINGS",
+    "account_info": "ACCOUNT INFORMATION",
+    "security_settings": "SECURITY",
+    "current_password_label": "CURRENT PASSWORD",
+    "new_password_label": "NEW PASSWORD",
+    "save_changes_btn": "SAVE CHANGES",
+    "saving_btn": "SAVING...",
+    "cancel_btn": "CANCEL",
+    "edit_profile_btn": "EDIT PROFILE",
+    "view_favorites": "VIEW FAVORITES"
 
 }

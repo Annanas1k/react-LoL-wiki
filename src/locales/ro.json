@@ -116,8 +116,45 @@
   "map_title": "Cunoaște",
   "map_accent": "Harta",
   "map_obj_label": "Obiectiv Strategic",
-  "map_pro_tip": "SFAT PROFESIONIST"
+  "map_pro_tip": "SFAT PROFESIONIST",
 
+
+  "login_title": "AUTENTIFICARE",
+  "register_title": "CREEAZĂ CONT",
+  "email_label": "ADRESĂ EMAIL",
+  "email_placeholder": "nume@exemplu.com",
+  "username_label": "NUME UTILIZATOR",
+  "username_placeholder": "Alege un nume de invocator",
+  "password_label": "PAROLĂ",
+  "password_placeholder": "Min. 8 caractere",
+  "login_btn": "CONECTARE",
+  "register_btn": "CREEAZĂ CONT",
+  "loading": "SE PROCESEAZĂ...",
+  "go_to_register": "NU AI CONT? ALĂTURĂ-TE ACUM",
+  "already_have_account": "AI DEJA UN CONT?",
+  "error_default": "A APĂRUT O EROARE",
+
+
+  "profile_rank_label": "INVOCATOR",
+    "logout_btn": "DECONECTARE",
+    "favorites_title": "CAMPIONI FAVORIȚI",
+    "search_favorites_placeholder": "CAUTĂ ÎN FAVORITE...",
+    "view_grid": "GRID",
+    "view_list": "LISTĂ",
+    "no_search_results": "NU EXISTĂ REZULTATE PENTRU CĂUTARE.",
+    "no_favorites_yet": "COLECTEAZĂ FAVORITE PENTRU A LE VEDEA AICI.",
+
+
+    "edit_profile_title": "SETĂRI PROFIL",
+    "account_info": "INFORMAȚII CONT",
+    "security_settings": "SECURITATE",
+    "current_password_label": "PAROLA CURENTĂ",
+    "new_password_label": "PAROLA NOUĂ",
+    "save_changes_btn": "SALVEAZĂ MODIFICĂRILE",
+    "saving_btn": "SE SALVEAZĂ...",
+    "cancel_btn": "ANULEAZĂ",
+    "edit_profile_btn": "EDITEAZA PROFILUL",
+    "view_favorites": "VEZI FAVORITE"
 
 
 

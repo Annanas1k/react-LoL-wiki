@@ -334,7 +334,7 @@ export const ItemGrid = ({ items, version, allItemsMap }) => {
       <style>{`
         .item-grid-wrap {
           display: grid;
-          grid-template-columns: repeat(4, 64px);
+          grid-template-columns: repeat(20, 64px);
           gap: 8px;
         }
         .item-cell {

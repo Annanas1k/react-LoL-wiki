@@ -1,105 +1,69 @@
-import React, { useContext, useMemo, useState } from 'react';
-import { UserContext } from '../../context/createContext';
-import { useChampContext } from "../../hooks/useChampContext";
-import { ChampionCard } from '../../components/champion/ChampionCard';
-import { ChampionListItem } from "../../components/champion/ChampionListItem";
-import { ChampionSkeleton } from '../../components/skeletons/ChampionSkeleton';
+import { useUserContext } from '../../hooks/useUserContext'
+import { useLanguageContext } from '../../hooks/useLanguageContext';
+import { useChampContext } from '../../hooks/useChampContext';
+import { Outlet, useNavigate, useLocation } from "react-router";
 
 export const UserProfile = () => {
-    const { user, logout } = useContext(UserContext);
-    const { champions, loading, version } = useChampContext();
-    
-    const [query, setQuery] = useState("");
-    const [viewMode, setViewMode] = useState(() => {
-        return localStorage.getItem("viewMode") || "grid";
-    });
+    const { user, logout } = useUserContext()
+    const { version } = useChampContext();
+    const { t } = useLanguageContext();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // 1. Filtrăm campionii: trebuie să fie în lista de favorite ȘI să respecte căutarea
-    const favoriteChampions = useMemo(() => {
-        if (!user?.favorites) return [];
-        
-        return champions.filter(champ => {
-            const isFav = user.favorites.includes(champ.id);
-            const matchesSearch = champ.name.toLowerCase().includes(query.toLowerCase());
-            return isFav && matchesSearch;
-        });
-    }, [champions, user?.favorites, query]);
-
-    const handleViewChange = (mode) => {
-        setViewMode(mode);
-        localStorage.setItem("viewMode", mode);
-    };
+    const isEditRoute = location.pathname.includes('/edit');
 
     return (
-        <div className="container-fluid min-vh-100 bg-black text-white py-5">
-            <div className="container" style={{ maxWidth: '1400px' }}>
+        <div className="profile-viewport">
+            <div className="profile-container">
                 
-                {/* Header Profil */}
-                <div className="row mb-5 align-items-center bg-dark p-4 rounded-3 border border-secondary">
-                    <div className="col-md-auto">
-                        <div className="rounded-circle border border-riot-gold p-1" style={{ width: '120px', height: '120px', overflow: 'hidden' }}>
-                            <img src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/profileicon/588.png" className="img-fluid" alt="Avatar" />
+                {/* HEADER FIX PENTRU AMBELE SUB-RUTE */}
+                <header className="profile-header">
+                    <div className="profile-info-wrapper">
+                        <div className="profile-avatar-frame">
+                            <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/588.png`} alt="Avatar" />
+                            <div className="frame-border"></div>
+                        </div>
+                        <div className="profile-details">
+                            <span className="profile-rank-tag">{t('profile_rank_label') || 'CHALLENGER'}</span>
+                            <h1 className="profile-name">{user?.username?.toUpperCase()}</h1>
+                            <div className="profile-header-actions">
+                                <button 
+                                    onClick={() => navigate(isEditRoute ? '/profile' : '/profile/edit')} 
+                                    className={`profile-action-btn ${isEditRoute ? 'active' : ''}`}
+                                >
+                                    {isEditRoute ? t('view_favorites') || 'VIEW FAVORITES' : t('edit_profile_btn') || 'EDIT PROFILE'}
+                                </button>
+                                <button onClick={logout} className="profile-action-btn logout">
+                                    {t('logout_btn') || 'LOGOUT'}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-md">
-                        <h1 className="display-5 fw-bold italic mb-1 text-riot-gold">{user?.username?.toUpperCase()}</h1>
-                        <p className="text-secondary mb-3">{user?.email}</p>
-                        <button onClick={logout} className="btn btn-outline-danger btn-sm fw-bold px-4">SIGN OUT</button>
-                    </div>
-                </div>
+                </header>
 
-                {/* Bara de unelte (Search & View Mode) similară cu ChampionPage */}
-                <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
-                    <h3 className="fw-bold italic mb-0">FAVORITE CHAMPIONS</h3>
-                    
-                    <div className="d-flex gap-3 align-items-center">
-                        <input
-                            type="text"
-                            className="form-control bg-dark border-secondary text-white shadow-none"
-                            placeholder="Search in favorites..."
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            style={{ width: '250px' }}
-                        />
-                        
-                        <div className="btn-group border border-secondary rounded">
-                            <button 
-                                className={`btn btn-sm ${viewMode === 'grid' ? 'btn-riot-gold' : 'btn-dark'}`}
-                                onClick={() => handleViewChange('grid')}
-                            >
-                                Grid
-                            </button>
-                            <button 
-                                className={`btn btn-sm ${viewMode === 'list' ? 'btn-riot-gold' : 'btn-dark'}`}
-                                onClick={() => handleViewChange('list')}
-                            >
-                                List
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Grid-ul sau Lista de campioni */}
-                <div className={viewMode === "grid" ? "row row-cols-2 row-cols-md-3 row-cols-xl-5 g-4" : "d-flex flex-column gap-2"}>
-                    {loading ? (
-                        Array(5).fill(0).map((_, i) => <ChampionSkeleton key={i} />)
-                    ) : favoriteChampions.length > 0 ? (
-                        favoriteChampions.map(champ => (
-                            viewMode === "grid" ? (
-                                <ChampionCard key={champ.id} champion={champ} />
-                            ) : (
-                                <ChampionListItem key={champ.id} champion={champ} version={version} />
-                            )
-                        ))
-                    ) : (
-                        <div className="col-12 text-center py-5 border border-dashed border-secondary rounded">
-                            <p className="text-secondary mb-0">
-                                {query ? "No favorites match your search." : "You haven't added any favorites yet."}
-                            </p>
-                        </div>
-                    )}
-                </div>
+                <main className="profile-main-content">
+                    {/* AICI se randează FavoritesList sau EditProfilePanel în funcție de URL */}
+                    <Outlet />
+                </main>
             </div>
+
+            <style dangerouslySetInnerHTML={{ __html: `
+                .profile-viewport { min-height: 100vh; background: #010a13; color: #f0e6d2; font-family: 'Rajdhani', sans-serif; padding: 60px 20px; }
+                .profile-container { max-width: 1200px; margin: 0 auto; }
+                .profile-header { background: rgba(10, 20, 30, 0.7); border: 1px solid rgba(200, 170, 85, 0.2); padding: 40px; margin-bottom: 40px; border-radius: 4px; }
+                .profile-info-wrapper { display: flex; align-items: center; gap: 30px; }
+                .profile-avatar-frame { width: 120px; height: 120px; border: 2px solid #c8aa55; padding: 5px; position: relative; }
+                .profile-avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+                .profile-name { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; font-style: italic; margin: 0; letter-spacing: 2px; color: #f0e6d2; }
+                .profile-rank-tag { color: #c8aa55; letter-spacing: 3px; font-size: 12px; font-weight: 700; }
+                .profile-header-actions { display: flex; gap: 15px; margin-top: 15px; }
+                .profile-action-btn { background: transparent; border: 1px solid #c8aa55; color: #c8aa55; padding: 8px 20px; font-weight: 700; cursor: pointer; transition: 0.3s; font-family: 'Rajdhani'; }
+                .profile-action-btn.active, .profile-action-btn:hover { background: #c8aa55; color: #010a13; }
+                .profile-action-btn.logout { border-color: #ff4655; color: #ff4655; }
+                .profile-action-btn.logout:hover { background: #ff4655; color: white; }
+                .profile-main-content { animation: fadeIn 0.5s ease; }
+                @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+            `}} />
         </div>
     );
 };

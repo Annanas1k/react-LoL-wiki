@@ -19,6 +19,8 @@ const userReducer = (state, action) => {
             return { ...state, user: null, error: null };
         case 'UPDATE_FAVORITES':
             return { ...state, user: { ...state.user, favorites: action.payload } };
+        case 'UPDATE_PROFILE':
+            return { ...state, user: action.payload, loading: false };
         default:
             return state;
     }
@@ -73,6 +75,40 @@ export const UserProvider = ({ children }) => {
         dispatch({ type: 'LOGOUT' });
     };
 
+    const updateProfile = async (newDetails) => {
+        dispatch({ type: 'AUTH_START' });
+        try {
+            const usersDB = JSON.parse(localStorage.getItem("users_db") || "[]");
+            const currentUser = state.user;
+
+            // 1. Găsim indexul utilizatorului în DB
+            const userIndex = usersDB.findIndex(u => u.email === currentUser.email);
+            if (userIndex === -1) throw new Error("Utilizatorul nu a fost găsit!");
+
+            // 2. Creăm noul obiect de utilizator pentru DB (păstrăm câmpurile vechi, suprascriem cu cele noi)
+            // Dacă newPassword este gol, păstrăm parola veche
+            const updatedUserDB = {
+                ...usersDB[userIndex],
+                username: newDetails.username || usersDB[userIndex].username,
+                email: newDetails.email || usersDB[userIndex].email,
+                password: newDetails.newPassword || usersDB[userIndex].password
+            };
+
+            // 3. Salvăm în DB
+            usersDB[userIndex] = updatedUserDB;
+            localStorage.setItem("users_db", JSON.stringify(usersDB));
+
+            // 4. Actualizăm sesiunea (fără parolă)
+            const { password, ...sessionUser } = updatedUserDB;
+            localStorage.setItem("riot_session", JSON.stringify(sessionUser));
+
+            dispatch({ type: 'UPDATE_PROFILE', payload: sessionUser });
+        } catch (err) {
+            dispatch({ type: 'AUTH_FAILURE', payload: err.message });
+            throw err;
+        }
+    };
+
     const toggleFavorite = async (championId) => {
     try {
         const usersDB = JSON.parse(localStorage.getItem("users_db") || "[]");
@@ -109,7 +145,8 @@ export const UserProvider = ({ children }) => {
         register,
         login,
         logout,
-        toggleFavorite
+        toggleFavorite,
+        updateProfile
     }), [state]);
 
     

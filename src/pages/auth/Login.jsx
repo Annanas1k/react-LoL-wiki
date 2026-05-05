@@ -1,76 +1,217 @@
 import { useState } from "react"
-import {useUserContext} from '../../hooks/useUserContext'
+import { useUserContext } from '../../hooks/useUserContext'
+import { useLanguageContext } from '../../hooks/useLanguageContext'
 import { useNavigate, Link } from "react-router"
 
-
-export const Login = () =>{
-    const [userCredentials, setUserCredentials] = useState({email: '', password: ''})
-    const {login, error, loading} = useUserContext()
+export const Login = () => {
+    const [userCredentials, setUserCredentials] = useState({ email: '', password: '' })
+    const { login, error, loading } = useUserContext()
+    const { t} = useLanguageContext()
     const navigate = useNavigate()
 
-
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault()
-        try{
+        try {
             await login(userCredentials)
             navigate('/')
-        }catch(err){
-            console.log(err)
+        } catch (err) {
+            console.error("Login failed:", err)
         }
     }
 
-
     return (
-        <div className="container-fluid vh-100 bg-black text-white">
-            <div className="row h-100">
-                <div className="col-md-4 d-flex align-items-center justify-content-center p-5">
-                    <div className="w-100" style={{ maxWidth: '350px' }}>
-                        <h2 className="fw-bold mb-4 italic">SIGN IN</h2>
-                        
-                        <form onSubmit={handleSubmit}>
-                            <div className="mb-3">
-                                <input 
-                                    type="email" 
-                                    className="form-control bg-dark border-0 text-white p-3" 
-                                    placeholder="EMAIL" 
-                                    value={userCredentials.email} 
-                                    onChange={(e) => setUserCredentials( {...userCredentials, email:e.target.value})} 
-                                    required 
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <input 
-                                    type="password" 
-                                    className="form-control bg-dark border-0 text-white p-3" 
-                                    placeholder="PASSWORD" 
-                                    value={userCredentials.password} 
-                                    onChange={(e) => setUserCredentials({...userCredentials, password: e.target.value})} 
-                                    required 
-                                />
-                            </div>
-                            
-                            {error && <div className="text-danger small mb-3 fw-bold">{error.toUpperCase()}</div>}
-                            
-                            <button type="submit" className="btn btn-danger w-100 p-3 fw-bold mb-4" disabled={loading}>
-                                {loading ? 'LOADING...' : 'SIGN IN'}
-                            </button>
-                        </form>
+        <div className="auth-viewport">
+            <div className="auth-side-panel">
 
-                        <div className="text-center">
-                            <Link to="/auth/register" className="text-secondary text-decoration-none small fw-bold">CREATE ACCOUNT</Link>
+
+                <div className="auth-form-container">
+                    <div className="auth-brand-gold" />
+                    <h2 className="auth-title">{t('login_title')}</h2>
+                    
+                    <form onSubmit={handleSubmit} className="auth-form">
+                        <div className="auth-input-group">
+                            <label className="auth-label">{t('email_label')}</label>
+                            <input 
+                                type="email" 
+                                className="auth-input" 
+                                placeholder={t('email_placeholder')} 
+                                value={userCredentials.email} 
+                                onChange={(e) => setUserCredentials( {...userCredentials, email: e.target.value})} 
+                                required 
+                            />
                         </div>
+
+                        <div className="auth-input-group">
+                            <label className="auth-label">{t('password_label')}</label>
+                            <input 
+                                type="password" 
+                                className="auth-input" 
+                                placeholder={t('password_placeholder')} 
+                                value={userCredentials.password} 
+                                onChange={(e) => setUserCredentials({...userCredentials, password: e.target.value})} 
+                                required 
+                            />
+                        </div>
+                        
+                        {error && <div className="auth-error-msg">{error.toUpperCase()}</div>}
+                        
+                        <button type="submit" className="auth-submit-btn" disabled={loading}>
+                            {loading ? t('loading') || 'AUTHENTICATING...' : t('login_btn')}
+                        </button>
+                    </form>
+
+                    <div className="auth-footer">
+                        <Link to="/auth/register" className="auth-link">
+                            {t('go_to_register')}
+                        </Link>
                     </div>
                 </div>
-                
-                <div className="col-md-8 d-none d-md-block p-0">
-                    <div style={{
-                        backgroundImage: `url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg')`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        height: '100%'
-                    }}></div>
-                </div>
             </div>
+            
+            <div className="auth-splash-panel">
+                <div className="auth-splash-overlay" />
+            </div>
+
+            <style dangerouslySetInnerHTML={{ __html: `
+                .auth-viewport {
+                    display: flex;
+                    height: 100vh;
+                    width: 100vw;
+                    background: #010a13;
+                    overflow: hidden;
+                    font-family: 'Rajdhani', sans-serif;
+                }
+
+                .auth-side-panel {
+                    width: 450px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 40px;
+                    background: rgba(1, 10, 19, 0.98);
+                    border-right: 1px solid rgba(200, 170, 85, 0.2);
+                    z-index: 10;
+                    position: relative;
+                }
+
+                .auth-lang-switcher {
+                    position: absolute;
+                    top: 25px;
+                    right: 25px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .lang-btn {
+                    background: none;
+                    border: none;
+                    color: rgba(200, 170, 85, 0.4);
+                    font-weight: 700;
+                    font-size: 13px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+
+                .lang-btn.active, .lang-btn:hover { color: #c8aa55; }
+                .lang-divider { color: rgba(200, 170, 85, 0.1); font-size: 11px; }
+
+                .auth-form-container { width: 100%; max-width: 320px; }
+                .auth-brand-gold { width: 40px; height: 2px; background: #c8aa55; margin-bottom: 20px; }
+                
+                .auth-title {
+                    font-family: 'Syne', sans-serif;
+                    font-weight: 800;
+                    font-size: 2rem;
+                    color: #f0e6d2;
+                    letter-spacing: 2px;
+                    margin-bottom: 40px;
+                    font-style: italic;
+                    text-transform: uppercase;
+                }
+
+                .auth-input-group { margin-bottom: 25px; }
+                .auth-label {
+                    display: block;
+                    color: #c8aa55;
+                    font-size: 11px;
+                    font-weight: 700;
+                    letter-spacing: 1.5px;
+                    margin-bottom: 8px;
+                    text-transform: uppercase;
+                }
+
+                .auth-input {
+                    width: 100%;
+                    background: rgba(0, 0, 0, 0.6);
+                    border: 1px solid rgba(200, 170, 85, 0.2);
+                    padding: 14px 18px;
+                    color: #f0e6d2;
+                    font-size: 14px;
+                    font-weight: 600;
+                    outline: none;
+                    transition: 0.3s;
+                }
+
+                .auth-input:focus {
+                    border-color: #c8aa55;
+                    background: rgba(0, 0, 0, 0.8);
+                    box-shadow: inset 0 0 10px rgba(200, 170, 85, 0.1);
+                }
+
+                .auth-error-msg {
+                    color: #ff4655;
+                    font-size: 11px;
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                    border-left: 2px solid #ff4655;
+                    padding-left: 10px;
+                }
+
+                .auth-submit-btn {
+                    width: 100%;
+                    padding: 16px;
+                    background: #c8aa55;
+                    border: 1px solid #c8aa55;
+                    color: #010a13;
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    text-transform: uppercase;
+                }
+
+                .auth-submit-btn:hover:not(:disabled) {
+                    background: #f0e6d2;
+                    border-color: #f0e6d2;
+                }
+
+                .auth-submit-btn:disabled { opacity: 0.5; filter: grayscale(1); cursor: not-allowed; }
+
+                .auth-footer { margin-top: 30px; text-align: center; border-top: 1px solid rgba(200, 170, 85, 0.1); padding-top: 25px; }
+                .auth-link { color: rgba(200, 170, 85, 0.6); text-decoration: none; font-size: 11px; font-weight: 700; transition: 0.3s; }
+                .auth-link:hover { color: #c8aa55; }
+
+                .auth-splash-panel {
+                    flex: 1;
+                    background-image: url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    position: relative;
+                }
+
+                .auth-splash-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to right, #010a13, transparent 70%);
+                }
+
+                @media (max-width: 768px) {
+                    .auth-side-panel { width: 100%; border: none; }
+                    .auth-splash-panel { display: none; }
+                }
+            `}} />
         </div>
     )
 }

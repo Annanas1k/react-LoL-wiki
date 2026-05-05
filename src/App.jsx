@@ -15,6 +15,8 @@ import { NotFound } from "./pages/NotFound/NotFound"
 import { ItemsPage } from "./pages/ItemsPage/ItemsPage"
 import { RunesPage } from "./pages/RunesPage/RunesPage"
 import { RunePathPage } from "./pages/RunesPage/RunesPathPage"
+import { EditProfilePanel } from "./pages/auth/EditProfile"
+import { FavoritesList } from "./pages/auth/FavoriteList"
 function App() {
 
   return (
@@ -47,8 +49,13 @@ function App() {
         <Route path="/test" element={<Test />} />
 
         <Route element={<ProtectedRoute />}>
-            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/profile" element={<UserProfile />}>
+              <Route index element={<FavoritesList />} />
+              <Route path="edit" element={<EditProfilePanel />} />
+          </Route>
         </Route>
+
+        
 
         <Route path="*"  element={<NotFound />}/>
       </Route>

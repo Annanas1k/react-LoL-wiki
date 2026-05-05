@@ -1,6 +1,8 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { useChampContext } from '../../hooks/useChampContext'
+import { RuneDetail } from '../../components/rune/RuneDetail'
+import { RuneNode } from '../../components/rune/RuneNode'
 
 const PATH_COLORS = {
   Precision:   { accent: '#c8a84b', glow: 'rgba(200,168,75,0.3)',  dim: 'rgba(200,168,75,0.12)', ring: '#c8a84b' },
@@ -10,84 +12,9 @@ const PATH_COLORS = {
   Inspiration: { accent: '#4abfcf', glow: 'rgba(74,191,207,0.3)',  dim: 'rgba(74,191,207,0.12)', ring: '#4abfcf' },
 }
 
-const cleanHtml = (html) => {
-  if (!html) return ''
-  return html
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/?[^>]+(>|$)/g, '')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim()
-}
 
-const RuneNode = ({ rune, isKeystone, color, isSelected, onClick }) => (
-  <div
-    className={`rune-node${isKeystone ? ' keystone' : ''}${isSelected ? ' selected' : ''}`}
-    onClick={() => onClick(rune)}
-    style={{ '--accent': color.accent, '--glow': color.glow, '--dim': color.dim }}
-    title={rune.name}
-  >
-    <div className="rune-node-ring">
-      <img
-        src={`https://ddragon.leagueoflegends.com/cdn/img/${rune.icon}`}
-        alt={rune.name}
-        className="rune-node-img"
-      />
-    </div>
-    {isSelected && <div className="rune-node-pulse" />}
-  </div>
-)
 
-const RuneDetail = ({ rune, path, color }) => {
-  if (!rune) return (
-    <div className="rune-detail-empty">
-      <div className="rune-detail-empty-icon">
-        <img
-          src={`https://ddragon.leagueoflegends.com/cdn/img/${path.icon}`}
-          alt={path.name}
-          style={{ width: 48, height: 48, opacity: 0.2, objectFit: 'contain' }}
-        />
-      </div>
-      <div className="rune-detail-empty-text">Select a rune to see details</div>
-    </div>
-  )
 
-  const desc = cleanHtml(rune.longDesc || rune.shortDesc || '')
-  const paragraphs = desc.split('\n').filter(Boolean)
-
-  return (
-    <div className="rune-detail" key={rune.id}>
-      <div className="rune-detail-header">
-        <div className="rune-detail-img-wrap" style={{ '--accent': color.accent, '--glow': color.glow }}>
-          <img
-            src={`https://ddragon.leagueoflegends.com/cdn/img/${rune.icon}`}
-            alt={rune.name}
-            className="rune-detail-img"
-          />
-        </div>
-        <div>
-          <div className="rune-detail-path" style={{ color: color.accent }}>
-            {path.name}
-          </div>
-          <div className="rune-detail-name">{rune.name}</div>
-        </div>
-      </div>
-
-      <div className="rune-detail-divider" style={{ background: `linear-gradient(90deg, ${color.accent}60, transparent)` }} />
-
-      {rune.shortDesc && (
-        <div className="rune-detail-short" style={{ borderColor: color.accent + '50' }}>
-          {cleanHtml(rune.shortDesc)}
-        </div>
-      )}
-
-      <div className="rune-detail-desc">
-        {paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
-      </div>
-    </div>
-  )
-}
 
 export const RunePathPage = () => {
   const { pathId, runeName } = useParams()
