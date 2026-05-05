@@ -55,7 +55,7 @@ export const ChampProvider = ({ children }) => {
           setLoading(false)
         }
       } catch (err) {
-        console.error("Failed to fetch champions: ", err)
+        console.error("Failed to fetch data: ", err)
         setLoading(false)
       }
     }

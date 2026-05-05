@@ -16,11 +16,11 @@ export const Header = () => {
 
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <NavLink className="nav-link text-uppercase fw-bold" to="/champions">Champions</NavLink>
+                         <li className="nav-item">
+                            <NavLink className="nav-link text-uppercase fw-bold" to="/">Learn To PLay</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link text-uppercase fw-bold" to="/patch-notes">Patch Notes</NavLink>
+                            <NavLink className="nav-link text-uppercase fw-bold" to="/champions">Champions</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link text-uppercase fw-bold" to="/items">Items</NavLink>

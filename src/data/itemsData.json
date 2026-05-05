@@ -1,0 +1,28 @@
+{
+  "phases": [
+    {
+      "name": "Starter Items",
+      "color": "#888888",
+      "icon": "🛡️",
+      "desc": "Begin each game with a small amount of gold (500). Starter items give you sustain through the laning phase."
+    },
+    {
+      "name": "Core Build",
+      "color": "#c8a84b",
+      "icon": "⚔️",
+      "desc": "Your core items define your role. These usually cost 2,500–3,500 gold and are completed by mid-game."
+    },
+    {
+      "name": "Full Build",
+      "color": "#9b72e0",
+      "icon": "💎",
+      "desc": "A full build consists of 6 items. Reaching this stage means your champion has reached maximum power potential."
+    }
+  ],
+  "goldSources": [
+    { "src": "Minion kills (CS)", "val": "~21g" },
+    { "src": "Champion kills", "val": "300g" },
+    { "src": "Turret plates", "val": "160g" },
+    { "src": "Passive income", "val": "~20g/10s" }
+  ]
+}

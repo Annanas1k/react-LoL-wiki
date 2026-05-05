@@ -1,0 +1,66 @@
+{
+  "lanes": [
+    {
+      "id": "top",
+      "name": "Top Lane",
+      "role": "Fighter / Tank",
+      "desc": "The top lane is a solo island — long, isolated fights where self-sufficiency is everything.",
+      "traits": ["Tanky", "Self-sufficient", "Split-push"],
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/8dac0c1318083c411c90f5f94feec17e84cb052b-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/fc8d0c8c803a8e91a1912df9054b3be90211a2d9-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736",
+      "difficulty": 3
+    },
+    {
+      "id": "jungle",
+      "name": "Jungle",
+      "role": "Carry / Tank / Support",
+      "desc": "The jungler roams the entire map, farming neutral monsters and ambushing unsuspecting enemies.",
+      "traits": ["Map control", "Objective play", "Ganking"],
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/fa03a69b7c666230ae6945b83078e8a26027403a-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/eb84be329ef915096e908527267852ff26845bba-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736",
+      "difficulty": 5
+    },
+    {
+      "id": "mid",
+      "name": "Mid Lane",
+      "role": "Mage / Assassin",
+      "desc": "Mid lane is the center of the action. Mid laners are high-burst mages or slippery assassins.",
+      "traits": ["High damage", "Roaming", "Map pressure"],
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/62fcfeb7dcbb737f0cdaceb554daf4237f2c234a-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/245d81d16cb5fef638753ce7d83e137a4d2aaca7-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736",
+      "difficulty": 4
+    },
+    {
+      "id": "bot",
+      "name": "Bot Lane",
+      "role": "Marksman",
+      "desc": "Bot laners are ranged champions who deal massive damage in the late game.",
+      "traits": ["Late game power", "Ranged damage", "Item dependent"],
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/1059c2aebd67b535ce1348fa0b72b453a46f6b5e-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/87489b0e450b3fa59e176a3189c61c8eb9092c78-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736",
+      "difficulty": 3
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "role": "Healer / Tank / Mage",
+      "desc": "Supports are the backbone of the team. They protect and enable the entire team.",
+      "traits": ["Vision control", "Team utility", "Engage / Peel"],
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d5dc4ba9080bf3c361e061afa69c9563aa38f5f9-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/ee41cd027bf8af85bebc07c8480b1304b793fc1e-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736",
+      "difficulty": 2
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Nexus",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3f70356e890d0f5858fe9851f6f4de859223bf89-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d79ab89872173d65758e134c07ef0645f7a0e504-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    },
+    {
+      "name": "Baron Nashor",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/c5aa9d0609c03b92ebb854c29537f9d5b9afe49f-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/ed4bef5c2369044d76cf535e038b6c1f8d323f13-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    }
+  ]
+}

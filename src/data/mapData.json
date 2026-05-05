@@ -1,0 +1,49 @@
+{
+  "zones": [
+    {
+      "id": "nexus-blue",
+      "label": "Your Nexus",
+      "title": "YOUR NEXUS",
+      "desc": "Your Nexus is the heart of your base. Minions spawn here and march down the lanes. Protect it at all costs.",
+      "tip": "If your Nexus is destroyed, your team loses the game.",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3f70356e890d0f5858fe9851f6f4de859223bf89-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d79ab89872173d65758e134c07ef0645f7a0e504-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    },
+    {
+      "id": "nexus-red",
+      "label": "Enemy Nexus",
+      "title": "ENEMY NEXUS",
+      "desc": "The enemy Nexus is your ultimate target. To reach it you must push through their turrets and inhibitors.",
+      "tip": "Destroy the enemy Nexus to win the game.",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/de5aec44fcea11a5320062399ff53b45bd76d060-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/5bf342fa15ae8a7cc0eda852fdb0361c5d7dcbbf-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    },
+    {
+      "id": "turret",
+      "label": "Turrets",
+      "title": "TURRETS",
+      "desc": "Turrets are powerful defensive structures lining each lane. They deal heavy damage to enemies.",
+      "tip": "Use minions as a shield when attacking turrets.",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/c955eecea79c17e8f5bcd5b4108e22dc674ad389-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/351bb454c18a5f55dc1d47ba5674e246bfaa171b-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    },
+    {
+      "id": "baron",
+      "label": "Baron Nashor",
+      "title": "BARON NASHOR",
+      "desc": "The most powerful monster in the jungle. Killing Baron grants your team bonus AD, AP, and supercharges minions.",
+      "tip": "Baron spawns at 20 min. Contest it with your team.",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/c5aa9d0609c03b92ebb854c29537f9d5b9afe49f-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/ed4bef5c2369044d76cf535e038b6c1f8d323f13-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    },
+    {
+      "id": "drake",
+      "label": "Dragon",
+      "title": "ELEMENTAL DRAKES",
+      "desc": "Dragons spawn in the river and grant permanent stacking buffs based on their element.",
+      "tip": "Stack 4 drake souls for a powerful elemental buff.",
+      "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/dd3af4418ea63af03ad11d0c065f66a282a3cd7d-980x980.png?accountingTag=LoL&auto=format&fit=crop&q=80&h=96&w=96&crop=center",
+      "photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/1faaf44ebe07ec29900a21db0810b130f4777342-3288x2100.png?accountingTag=LoL&auto=format&fit=fill&q=80&w=736"
+    }
+  ]
+}
